@@ -1,0 +1,36 @@
+try:
+  # а) Створюємо та заповнюємо файл TF15_1
+  with open("TF15_1.txt", "w") as file:
+      file.write("абв ба\n")
+      file.write("колок\n")
+      file.write("мадам\n")
+      file.write("робот\n")
+      file.write("потоп\n")
+      file.write("hello\n")
+      file.write("world\n")
+      file.write("aba\n")
+
+  # б) Знаходимо та записуємо симетричні слова у файл TF15_2
+  with open("TF15_1.txt", "r") as file:
+      symmetric_words = []
+      for line in file:
+          words = line.strip().split()
+          for word in words:
+              if word == word[::-1]:  # Перевірка на симетричність
+                  symmetric_words.append(word)
+
+  with open("TF15_2.txt", "w") as file:
+      file.write(" ".join(symmetric_words))
+
+  # в) Виводимо кожне слово з файлу TF15_2 у окремому рядку
+  with open("TF15_2.txt", "r") as file:
+      for line in file:
+          words = line.strip().split()
+          for word in words:
+              print(word)
+
+except FileNotFoundError:
+  print("Помилка: Файл не знайдено.")
+
+except Exception as e:
+  print(f"Помилка: {str(e)}")
